@@ -76,6 +76,7 @@
 				<li>What are client-side rendering (CSR), static-site generation (SSG) and server-side rendering (SSR) in the context of client-side Web development and how do they compare to each other? Discuss with reference to the relevant context, development, deployment, problem types to which each rendering approach is most applicable and include examples (<a href="https://medium.com/@khushbuchoksi/what-are-csr-ssr-ssg-and-isr-d59201e3b060">article</a>).</li>
 				<li>What is client-side web development? Define and discuss with reference to development, deployment, technologies, suitable applications and anything else you know about it.</li>
 				<li>What are Web APIs? Define and discuss with reference to where they are found and how they are used in Web development. Give examples of five Web APIs you have used in Web development, explaining their purpose and providing some examples of use with some code (or pseudocode).</li>
+				<li>Discuss network communication in the context of a static website being used by an end user. Include information on all the technologies involved and describe a use case that includes all mentioned network communication patterns.</li>
 			    </ol>
 			    
 			</article>
@@ -95,7 +96,19 @@
 				<li>What is <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">cross-origin resource sharing (CORS)</a>? Explain how it works.</li>
 				<li>What is the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Engine/JavaScript"> JavaScript engine?</a></li>
 				<li>How do asynchronous requests with conventional callbacks and promises differ in terms of <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">JavaScript engine queues</a>?</li>
+				<li>What does a programmer need to do to include a Web API in their JavaScript client-side application? Give an example.</li>
 				<li>What is the difference between the Internet and the World Wide Web?</li>
+				<li>What is backend as a service (BaaS) and how is it used?</li>
+				<li>What are the advantages of using promises over callback functions?</li>
+				<li>Give three examples of mechanisms used for developing responsive Web pages. Explain briefly how they work.</li>
+				<li>What is a software library? Give an example used in client-side development.</li>
+				<li>What are the advantages of using client-side frameworks over 'vanilla' HTML-CSS-JavaScript development?</li>
+				<li>Give an example of a scenario where the use of asynchronous programming would be beneficial and explain your answer.</li>
+				<li>What is the purpose of accessibility? Give at least two examples of how it is built into Web applications.</li>
+				<li>What is the name of 'standard JavaScript'? Explain how it was developed.</li>
+				<li>How can a 'full-stack' Web application be built by employing only client-side development?</li>
+				<li>What is reactive programming? Give an example of how it might be used in a Web application.</li>
+				<li>What are the advantages of matching strings with regular expressions over matching with literal strings? Give an example.</li>
 			    </ol>
 			</article>
                     </li>
@@ -167,12 +180,71 @@
 
 @media screen and (max-width: 600px) {
     body { background-color: red; }
-}
+}</pre></li>
+				<li>
+				    In the following JavaScript code, what is the role of <span class="fw">xyz</span>? <pre>
+
+setTimeout(xyz, 1000);
+				    </pre>
+
+				    Write a complete JavaScript definition of <span class="fw">xyz</span> that is simple but meaningful.
+				</li>
+
+				<li>
+				    Write an example of a <span class="fw">template</span> element in HTML. Explain how it might be used.
+				</li>
+				<li>
+				    There are three asynchronous calls that need to run in parallel. Then the results of their operations need to be combined. Explain how this can be done in JavaScript. You may use code or pseudocode.
+				</li>
+				<li>
+				    What is the JavaScript event that can be handled to process a form on the client side? Write some JavaScript or pseudocode to show how a simple function might be set up as the handler for this event.</li>
+
+				<li>Which aspect of client-side frameworks are Web Components comparable to? Explain how they are used.</li>
+				<li>What are the page layout mechanisms currently available in HTML and CSS? List at least three and briefly explain how they differ.</li>
+				<li>What is the benefit of functional programming with <span class="fw">Array</span> methods such as <span class="fw">map</span> and <span class="fw">filter</span>? Give an example use case for <span class="fw">map</span>.</li>
+				<li>Give an example of a function in JavaScript that returns a promise. Explain why this type of return value is suitable for this function.</li>
+				<li>What is the purpose of the <span class="fw">Symbol</span> type in JavaScript? Briefly describe a use case.</li>
+				<li>Which of the following HTML elements, if any, would be selected with the CSS selector <span class="fw">[src]</span><pre>
+
+&lt;img src="xyz.png"/>
+
+&lt;img src/>
+
+&lt;script src="xyz.js">&lt;/script>
+
+&lt;src img="xyz.png">&lt;/src>
+				</pre>
+
+				Explain your answer.
+				</li>
+				<li>
+				    Write a regular expression that selects valid email addresses.
+				</li>
+				<li>
+				    Write a media query that selects screens with viewports that have a width of 600 pixels or less.
+				</li>
+				<li>
+				    What type of object is in variable <span class="fw">x</span> after the following line of code runs? What is its purpose?<pre>
+
+let x = fetch("https://example.com/resource.json");				    </pre>
+				</li>
+				<li>
+				    Write a CSS selector that selects all of the following HTML elements, without using a comma:<pre>
+
+&lt;img src="xyz.png"/>
+
+&lt;script src="main.js">&lt;/script>
+
+&lt;article src>&lt;/article>    </pre>
+				</li>
+				<li>
+				    Write three different CSS selectors that select the following HTML element:<pre>
+
+&lt;article class="important">&lt;/article></pre>
+				</li>
 			    </ol>
 			</article>
-                    </li>
-		    
-		    
+		    </li>		    
 		</ol>
 	    </article>
 	</div>
