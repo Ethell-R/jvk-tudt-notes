@@ -7,6 +7,12 @@ body { margin: 0; padding: 0; height: 100%; width: 100%; font-size: large;  disp
 h1, h2, h3, h4, h5, h6 { margin: 1em 0 0.75em 0; }
 * { font-family: arial, helvetica, san-serif; box-sizing: border-box; }
 
+/* Focus styling for list items */
+li:focus {
+    outline: 3px solid #007bff;
+    background-color: #f0f8ff;
+}
+
 hr { border: 0.5px solid black;}
 
 /* default styles for lists */
@@ -28,12 +34,46 @@ article>.links a { background: dimgray; color: white; margin: 0 0.3em 0 0; paddi
 
 #sig { font-size: small; transform: rotate(270deg); position: fixed; bottom: 1.8em; right: -2.2em;}
 
-header#tudheader { width: 100%; display: flex; max-height: 5em; }
-header#tudheader > * {  height: 100%; margin: 0; padding: 0; font-weight: bold; }
-header#tudheader > #tuddepttext > p { width: 10em; padding: 0; margin: 1em;}
-header#tudheader #titlecontainer { flex-grow: 1; }
-header#tudheader #title { font-size: 2em; padding-top: 0.5em; margin: auto 1em auto 1em; text-align: center; }
+header#tudheader {
+    width: 100%; /* Full width of the viewport */
+    display: flex;    
+    align-items: center;
+    justify-content: space-between; /* Space out children */
+    padding: 0em; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding in width calculations */
+    background-color: white; /* Optional background color */
+}
+  
+/* General styling for header children */
+header#tudheader > * {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}  
 
+header#tudheader > #tuddepttext > p { width: 10em; padding: 0; margin: 1em; }
+
+header#tudheader #titlecontainer {
+    flex-grow: 1; /* Allow title container to grow */
+    text-align: center;
+    padding: 0 1em;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+header#tudheader #title {
+    font-size: 2em; /* Default font size */
+    margin: 0 auto;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis if the title overflows */
+}
+
+header#tudheader #leftlogo,
+header#tudheader #rightlogo {
+  max-width: 10vw; /* Scale logos relative to viewport width */
+  height: auto; /* Maintain aspect ratio */
+}
 
 table#module-info th { width: 7em; text-align: left; padding: 0.2em 0; }
 table#ca-info th { width: 8em; text-align: left; }
@@ -297,6 +337,24 @@ and responsive elements */
     header#tudheader #rightlogo { height: 10vw; }
     header#tudheader #leftlogo { height: 10vw; }
     
+}
+
+@media (max-width: 768px) {
+    header#tudheader {
+        flex-wrap: wrap; /* Allow header elements to wrap */
+        justify-content: center;
+        padding: 0em;
+    }
+
+    header#tudheader #titlecontainer {
+        width: 100%;
+        order: 2;
+    }
+
+    header#tudheader #title {
+        font-size: 1.5em; /* Reduce font size for smaller screens */
+        white-space: normal; /* Allow title to wrap */
+    }
 }
 
 @media print {

@@ -162,3 +162,110 @@ function init_articles() {
 }
 
 window.addEventListener("load", (e) => { run_with_data(INIT_DATA); });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all list items with tabindex and associated articles
+    const listItems = document.querySelectorAll('li[tabIndex]');
+    
+    console.log("List Items:", listItems); // Debugging
+    
+    // Add event listeners for each list item
+    listItems.forEach((listItem) => {
+        const article = listItem.querySelector('article'); // The associated article
+        const heading = listItem.querySelector('h2'); // The heading inside the article
+        
+        console.log("Heading:", heading);
+        console.log("Article:", article);
+        
+        listItem.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                // Toggle the article's visibility
+                if (article.style.display === "none" || !article.style.display) {
+                    article.style.display = "block";
+                    listItem.setAttribute("aria-expanded", "true");
+                } else {
+                    article.style.display = "none";
+                    listItem.setAttribute("aria-expanded", "false");
+                }
+                event.preventDefault(); // Prevent scrolling when pressing space
+            } else if (event.key === "Escape") {
+                // Close the article and focus back on the list item
+                if (article.style.display === "block") {
+                    article.style.display = "none";
+                    listItem.setAttribute("aria-expanded", "false");
+                    listItem.focus();
+                }
+            }
+        });
+
+        // Ensure the article is hidden by default
+        if (article) {
+            article.style.display = "none";
+            listItem.setAttribute("aria-expanded", "false");
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Initializing page...");
+
+    // Select all articles
+    const articles = document.querySelectorAll("li > article");
+
+    // Hide all articles by default
+    articles.forEach((article) => {
+        article.style.display = "none";
+        const parent = article.closest("li");
+        if (parent) parent.setAttribute("aria-expanded", "false");
+    });
+    console.log("All articles hidden by default.");
+
+    // Function to show an article
+    function showArticle(articleId) {
+        const listItem = document.getElementById(articleId);
+        if (listItem) {
+            const article = listItem.querySelector("article");
+            if (article) {
+                article.style.display = "block";
+                listItem.setAttribute("aria-expanded", "true");
+                console.log(`Article ${articleId} is now visible.`);
+            }
+        }
+    }
+
+    // Function to ensure a target element and its parent article are visible
+    function ensureElementVisible(targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            // Open all parent articles to make the target visible
+            let currentElement = targetElement.closest("li");
+            while (currentElement) {
+                const article = currentElement.querySelector("article");
+                if (article) {
+                    article.style.display = "block";
+                    currentElement.setAttribute("aria-expanded", "true");
+                }
+                currentElement = currentElement.parentElement.closest("li");
+            }
+
+            // Scroll into view and focus the target element
+            targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            targetElement.focus();
+            console.log(`Scrolled to target: ${targetId}`);
+        } else {
+            console.warn(`Target with ID ${targetId} not found.`);
+        }
+    }
+
+    // Handle internal links
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach((link) => {
+        const targetId = link.getAttribute("href").substring(1); // Extract the ID from the href
+        link.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default anchor behavior
+            ensureElementVisible(targetId);
+        });
+    });
+
+    console.log("Page initialization complete.");
+});
